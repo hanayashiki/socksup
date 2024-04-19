@@ -34,7 +34,7 @@ Password: <Password>
 
 ```
 --username, -u // The username to the server. By default, "default"
---password, -p // The password to the client. By default, a hash of your download timestamp.
+--password, -p // The password to the client. By default, a random 32 byte hex value stored at your home.
 --port, -P     // The listening port. By default, "1080"
 --hostname, -H // The listening hostname. By default, "0.0.0.0"
 --noAuth       // Dangerously disable authentication.

@@ -1,5 +1,7 @@
-import { createHash } from "node:crypto";
-import { statSync } from "node:fs";
+import { createHash, randomBytes } from "node:crypto";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import { homedir } from "node:os";
+import { join } from "node:path";
 import { parseArgs } from "node:util";
 
 import { createServer } from "../src";
@@ -15,9 +17,14 @@ const args = parseArgs({
 });
 
 function getDefaultPassword() {
-  const createdAt = statSync(__filename).birthtimeMs;
+  const source = join(homedir(), ".socksup-password");
+  if (existsSync(source)) {
+    return readFileSync(source).toString();
+  }
 
-  return createHash("sha256").update(createdAt.toString()).digest("hex");
+  const hash = createHash("sha256").update(randomBytes(32)).digest("hex");
+  writeFileSync(source, hash);
+  return hash;
 }
 
 const username = args.values.username || "default";
