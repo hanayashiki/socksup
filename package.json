@@ -1,0 +1,43 @@
+{
+  "name": "socksup",
+  "version": "0.0.1",
+  "type": "commonjs",
+  "bin": "./dist/index.js",
+  "files": [
+    "dist/"
+  ],
+  "author": "Chenyu Wang",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hanayashiki/socksup"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "scripts": {
+    "prepare": "husky install; pnpm build",
+    "dev": "tsx bin/index.ts",
+    "build": "tsup bin/index.ts --format esm,cjs",
+    "lint": "tsc && eslint . --ext .ts,.tsx",
+    "test": "vitest"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.7",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/parser": "^6.15.0",
+    "eslint": "^8.56.0",
+    "eslint-plugin-i": "^2.29.1",
+    "eslint-plugin-prettier": "^5.1.2",
+    "husky": "^8.0.3",
+    "nx": "^15.9.2",
+    "prettier": "^3.1.1",
+    "tsup": "^6.7.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3",
+    "vitest": "^1.1.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
